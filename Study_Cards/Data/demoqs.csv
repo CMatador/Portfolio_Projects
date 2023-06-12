@@ -1,0 +1,4 @@
+﻿Question|Answer
+"What makes relational databases ""relational""?"|"A relational database stores associated information across multiple tables; hence data from one table ""relate to"" or have ""relationships with"" data from other tables in the database."
+What types of relationship can exist between tables?|Tables can have one of the following 3 (4) relationships to each other: One-to-one, one-to-many (many-to-one), and many-to-many.
+What is an ERD?|An entity-relationship diagram (ERD) is a visual representation of database entities (tables), each entity's fields (including datatypes and keys), and the relationships between those entities.
