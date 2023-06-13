@@ -16,11 +16,26 @@ active_q = q_df.to_dict(orient='records')
 # Generate Card
 def new_card():
     global current_card
-    current_card = random.choice(active_q)
-    flash_card.itemconfig(side, image=card_front)
-    flash_card.itemconfig(card_title, text='Question', fill='black')
-    flash_card.itemconfig(
-        card_text, text=current_card['Question'], fill='black')
+    try:
+        current_card = random.choice(active_q)
+        flash_card.itemconfig(side, image=card_front)
+        flash_card.itemconfig(card_title, text='Question', fill='black')
+        flash_card.itemconfig(
+            card_text, text=current_card['Question'], fill='black')
+    except IndexError:
+        flash_card.itemconfig(
+            card_title,
+            text='Congratulations!',
+            fill='black'
+            )
+        flash_card.itemconfig(
+            card_text,
+            text='You have finished all of the questions.',
+            fill='black'
+        )
+        flip_button['state'] = 'disabled'
+        check_button['state'] = 'disabled'
+        x_button['state'] = 'disabled'
 
 
 # Flip Card
@@ -32,6 +47,12 @@ def flip_card():
         text=current_card['Answer'],
         fill='white'
     )
+
+
+# Remove Cards
+def remove_card():
+    active_q.remove(current_card)
+    new_card()
 
 
 # User Interface
@@ -77,7 +98,7 @@ check_button = Button(
     image=right_img,
     borderwidth=0,
     highlightthickness=0,
-    command=new_card
+    command=remove_card
 )
 check_button.grid(row=1, column=1)
 
