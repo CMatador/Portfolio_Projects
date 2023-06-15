@@ -1,0 +1,8 @@
+Topic Selection Menu:
+1 - Relational Databases (SQL)
+2 - Non-relational Databases and Excel
+3 - Data Visualizations and Power BI
+4 - Python Basics and OOP
+5 - Advanced Topics (ML, Cloud ETL, Kafka)
+6 - All Topics
+

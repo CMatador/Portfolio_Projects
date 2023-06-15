@@ -1,0 +1,437 @@
+~Module~Questions~Answers
+0~ Module 1 - Relational Databases ~"Question: What makes relational databases ""relational""?
+ "~"A relational database stores associated information across multiple tables; hence data from one table ""relate to"" or have ""relationships with"" data from other tables in the database.
+"
+1~ Module 1 - Relational Databases ~"Question: What types of relationship can exist between tables?
+ "~"Tables can have one of the following 3 (4) relationships to each other: One-to-one, one-to-many (many-to-one), and many-to-many.
+"
+2~ Module 1 - Relational Databases ~"Question: What is an ERD?
+ "~"An entity-relationship diagram (ERD) is a visual representation of database entities (tables), each entity's fields (including datatypes and keys), and the relationships between those entities.
+"
+3~ Module 1 - Relational Databases ~"Question: What is normalization?
+ "~"Normalization is the process of applying best-practice designs to database schemas, namely, to ||reduce redundancy and increase integrity||; these practices include removing row-row interdependencies, ensuring that each cell holds only a single value, eliminating redundancies (by not repeating data across tables), separating relationships across tables, and ensuring that dependencies are logical (by grouping related information into its own table).
+ "
+4~ Module 1 - Relational Databases ~"Question: What is denormalization?
+ "~"Denormalization is the deliberate relaxing of normalization principles to accommodate ease-of-use and efficiency. A common expression is ""normalize until it hurts, then de-normalize until it works"".
+"
+5~ Module 1 - Relational Databases ~"Question: What is a primary key?
+ "~"A primary key is a column or group of columns that uniquely identifies rows of a table. There are three main classifications of primary keys: (1) synthetic keys, which are arbitrarily-assigned values, usually incrementing integers: 1, 2, 3, 4, etc.; (2) natural keys, which are inherent to the data, such as social security numbers (SSNs) or vehicle identification numbers (VINs); and (3) composite or multicolumn keys, which use two or more columns to identify a row.
+"
+6~ Module 1 - Relational Databases ~"Question: What is a foreign key?
+ "~"A foreign key is a table's reference to another table's primary key. Foreign keys allow normalized tables to manage relationships.
+"
+7~ Module 1 - Relational Databases ~"Question: What is SQL?
+ "~"Structured Query Language (SQL) is programming language used to manage relational databases.
+"
+8~ Module 1 - Relational Databases ~"Question: Is SQL case-sensitive?
+ "~"No, SQL is not case-sensitive; however, the convention is to use all uppercase or all lowercase, not title case (e.g., `SELECT` or `select`, not `Select`).
+"
+9~ Module 1 - Relational Databases ~"Question: Is SQL whitespace-sensitive?
+ "~"No, SQL is not whitespace-sensitive. Line breaks, spaces, and indents are for readability and do not affect the code itself.
+"
+10~ Module 1 - Relational Databases ~"Question: What is the difference between the datatypes FLOAT, DOUBLE, and DECIMAL?
+ "~"Each of these data types encodes fractional/decimal values, but the difference is storage size and precision. `FLOAT` occupies ~4 bytes and is accurate to ~6 decimal places; `DOUBLE`, ~8 bytes and ~15 decimal places; `DECIMAL`, ~15 bytes and ~38 decimal places.
+"
+11~ Module 1 - Relational Databases ~"Question: What is the difference between the datatypes DATE, TIME, DATETIME, and DATETIMEOFFSET?
+ "~"`DATE` has date (`YYYY-MM-DD`) without time, `TIME` has time (`HH:MM:SS.ffff`) without date, `DATETIME` has both date and time (`YYYY-MM-DD HH:MM:SS.ffff`), as determined by the server settings, usually its location, `DATETIMEOFFSET` (`YYYY-MM-DD HH:MM:SS.ffff+HH:MM`) appends a timeshift to datetime. `DATETIMEOFFSET` is  not a timezone; it is a simple arithmetic operation with no awareness of complex time zone features such as Daylight Savings.
+"
+12~ Module 1 - Relational Databases ~"Question: What is Z-formatting, as it pertains to temporal data types?
+ "~"Z-formatting, noted by the letter ""Z"" at the end of a timestamp, indicates that it is in UTC time.
+"
+13~ Module 1 - Relational Databases ~"Question: What is the difference between the data types CHAR, NCHAR, VARCHAR, and NVARCHAR?
+ "~"""N"" stands for ""national character/language"". `N[VAR]CHAR` encodes UNICODE values and occupies at least two bytes of memory per character; `[VAR]CHAR` encodes ASCII values and occupies at least one byte per character. (UNICODE encodes most characters from most languages, whereas ASCII encodes the subset that is basically described by an English QWERTY keyboard.)
+ "
+14~ Module 1 - Relational Databases ~"Question: Explain what `SELECT *` does.
+ "~"`SELECT *` returns all columns of the table(s) being queried.
+"
+15~ Module 1 - Relational Databases ~"Question: What does a `WHERE` clause accomplish?
+ "~"The `WHERE` clause uses a condition to limit which rows are returned by a query.
+"
+16~ Module 1 - Relational Databases ~"Question: How can one limit rows returned by a query?
+ "~"The most common ways to limit the rows returned by a query are (1) imposition of a numeric limit using `SELECT TOP(N)` or `LIMIT N`, (2) inclusion of a `WHERE` clause, and/or (3) utilization of an `INNER JOIN`.
+"
+17~ Module 1 - Relational Databases ~"Question: How are the number of columns returned determined?
+ "~"The columns returned by a query are determined by the list of columns in the `SELECT` statement; e.g., `SELECT *` will return all available columns, `SELECT *, *` will return all available columns twice, and `SELECT colA, colB` will return only the two columns specified.
+"
+18~ Module 1 - Relational Databases ~"Question: What is a table alias?
+ "~"A table alias is a temporary name assigned to a table within a query to make reading and writing that query easier for the developer. It is accomplished by following the table's mention in the `FROM` clause by the alias or ""`AS` alias"". E.g., `SELECT"
+19~ Module 1 - Relational Databases ~"Question: What is the purpose of a join?
+ "~"A table join combines data from multiple tables.
+"
+20~ Module 1 - Relational Databases ~"Question: What are the different types of joins?
+ "~"Broadly speaking there are `INNER` and `OUTER` joins. `INNER` joins return only records that satisfy the join condition (""intersection"" from set theory); `LEFT OUTER` and `RIGHT OUTER` joins return the entire left or right table, respectively, and the records from the other table that satisfy the join condition; `FULL OUTER` joins return all the records from both tables (""union"" from set theory).
+"
+21~ Module 1 - Relational Databases ~"Question: What is a self-referencing join?
+ "~"A self-referencing join involves a table joining to itself; this is commonly used in tables that contain hierarchical data, such as an employee table with a ""reports to"" column that contains primary keys from the table itself.
+"
+22~ Module 1 - Relational Databases ~"Question: What makes a table ""left"" verses ""right""?
+ "~"Whether a joined table is ""left"" or ""right"" depends on the order in which it appears in the query. Thinking of a query being written from left to right, the first table is the left table, and the second table is the right table.
+"
+23~ Module 1 - Relational Databases ~"Question: What is an aggregated column?
+ "~"An aggregated column uses an aggregate function to return a result that is compiled from multiple cells. Common examples of functions include COUNT(), SUM(), MAX(), and MIN(), but there are many other functions, including ones that combine columns (instead of rows) and aggregate string datatypes.
+"
+24~ Module 1 - Relational Databases ~"Question: What clause accompanies aggregate functions, and when is it required?
+ "~"If individual columns are specified when using aggregate functions, a `GROUP BY` clause is required.
+"
+25~ Module 1 - Relational Databases ~"Question: How are aggregated columns filtered?
+ "~"Aggregated columns are filtered using a `HAVING` clause.
+"
+26~ Module 1 - Relational Databases ~"Question: What is DDL?
+ "~"Data Definition Language (DDL) is a subset of SQL used to define and modify data structures. Common commands include `CREATE`, `DROP`, and `ALTER`.
+"
+27~ Module 1 - Relational Databases ~"Question: What is DML?
+ "~"Data Manipulation Language (DML) is a subset of SQL used to act on the information contained in a table (rather than on the table itself, for which DDL is used). Common commands include `SELECT`, `INSERT INTO`, `UPDATE`, and `DELETE`.
+"
+28~ Module 1 - Relational Databases ~"Question: How is data deleted from a table?
+ "~"`DELETE FROM myTable WHERE condition;`. The `WHERE` clause is extremely important; without it, everything in the table will be deleted.
+
+ ^ Advanced Concepts
+
+"
+29~ Module 1 - Relational Databases ~"Question: How are variables created in SQL?
+ "~Variables are initialized using the `DECLARE` command. E.g., `DECLARE 
+30~ Module 1 - Relational Databases ~"Question: What is the `DISTINCT` command do?
+ "~"The `DISTINCT` command, which immediately follows the word `SELECT` is used to return a dataset without duplicate rows.
+"
+31~ Module 1 - Relational Databases ~"Question: What are `UNION` and `UNION ALL`?
+ "~"`UNION` and `UNION ALL` combine the results of two queries by ""stacking"" the results; that is, appending the results of the second query to those of the first. `UNION ALL` returns all results, whereas `UNION` returns only distinct results.
+"
+32~ Module 1 - Relational Databases ~"Question: What is a subquery?
+ "~A subquery is a query used within a query. E.g., `SELECT
+33~ Module 1 - Relational Databases ~"Question: What is a stored procedure?
+ "~"A stored procedure (or stored proc) similar to a function in other programming languages; it is a reusable, callable block of code. They can return results and/or be parameterized.  
+"
+34~ Module 1 - Relational Databases ~"Question: What is indexing?
+ "~"Indexing allows database rows to be stored in a sorted order. If a query meets certain requisite conditions, an indexed table can lead to improved performance (than if the table were non-indexed).
+"
+35~ Module 1 - Relational Databases ~"Question: What is partitioning?
+ "~"Partitioning stores a table's data as discrete chunks based on the values of the partition column. If a query meets certain requisite conditions, a partitioned table can lead to improved performance (than if the table were non-partitioned.)
+"
+36~ Module 1 - Relational Databases ~"Question: What is a CTE?
+ "~"A Common Table Expression (CTE) is a temporary, named result that can be used in a subsequent query. They are identified by the keyword `WITH`. (Multiple CTEs can be declared at once.)
+"
+37~ Module 1 - Relational Databases ~"Question: What is a view?
+ "~"A view is a stored query that can be used in place of a table when writing a query.
+"
+38~ Module 1 - Relational Databases ~"Question: What is the difference between `DELETE`, `TRUNCATE`, and `DROP`?
+ "~"`DELETE` is used to remove selected records from a table; a `WHERE` clause can be used, and identities are not reset. `TRUNCATE` is used to remove all data from a table; a `WHERE` clause cannot be used, and identities are reset. `DROP` completely removes a table and all of its data; a `WHERE` clause cannot be used, and identities will not exist post-execution.
+"
+39~ Module 1 - Relational Databases ~"Question: What is a transaction?
+ "~"A transaction is a unit of work performed against a database. The best practice is to start transactions with the `BEGIN` command and either `ROLLBACK` or `COMMIT` the transaction based on its result. 
+"
+40~ Module 1 - Relational Databases ~"Question: What are the ACID principles?
+ "~"The ACID principles are properties that all relational-database transactions should have.
+ "
+41~ Module 1 - Relational Databases ~"Question: What is a semi join?
+ "~"A left semi join returns exactly one record from the left table for each record of the right table that satisfies the join condition. Unlike inner and outer joins, a semi join cannot multiply rows (i.e., return more than one row for a given row of the left table). Most versions of SQL do not support semi joins; instead, an `EXISTS` or `IN` condition is typically used; e.g., `SELECT a.*FROM a WHERE a.key IN (SELECT b.Key FROM b);`.
+"
+42~ Module 1 - Relational Databases ~"Question: What is an anti join?
+ "~"A left anti join returns the records from the left table that have no matches to the right table (left minus right, from set theory). Most versions of SQL do not support anti joins; instead, a join and filter are typically used; e.g., `SELECT a*FROM a LEFT OUTER JOIN b ON a.key = b.key WHERE b.key IS NULL`.
+"
+43~ Module 1 - Relational Databases ~"Question: What is a cross join?
+ "~"A cross join (or Cartesian join) returns the Cartesian product of two table. A Cartesian product is the product set of multiple sets; that is, the combination of every member of the first set multiplied by every member of the second set. (This operation is potentially very expensive: If the left table has N records and the right has M records, the result will have N*M records. A `WHERE` clause can be used to filter results; however, in such cases, an inner join is typically a better approach.) 
+"
+44~ Module 1 - Relational Databases ~"Question: What is a cross apply?
+ "~A cross apply inner joins a left table to a table-valued function. E.g., `SELECT
+45~ Module 1 - Relational Databases ~"Question: What is a merge?
+ "~"A merge is used to combine two datasets using logic based on the following conditions: `WHEN MATCHED`, `WHEN NOT MATCHED BY sourceTbl`, and/or `WHEN NOT MATCHED BY targetTbl`.
+"
+46~ Module 2 - Non-relational Databases ~"Question: What is a non-relational database?
+ "~"Non-relational databases (often called NoSQL [""Not only SQL""] databases) are collections of data that do not utilize table structures.
+"
+47~ Module 2 - Non-relational Databases ~"Question: What are the benefits and shortcomings of non-relational databases (as compared to relational databases)?
+ "~"Benefits: Non-relational databases are easier to scale, generally faster to query, support flexible expansion, and accommodate inconsistent datatypes. They particularly excel with datasets whose structure is inconsistent, mutable, or unknown.
+ "
+48~ Module 2 - Non-relational Databases ~"Question: In addition to key-value, document, column-store, and graph databases, what are some other types of non-relational databases?
+ "~"Time-series databases, ledger databases, search databases.
+
+ ^ Key-value and Document
+
+"
+49~ Module 2 - Non-relational Databases ~"Question: What is a key-value database?
+ "~"A key-value database stores data in key-value pairs (like a Python dictionary). Keys are unique and are associated with a single value. (The value can be simple, like a number or string, or complex, like a dictionary or JSON-like structure.)
+"
+50~ Module 2 - Non-relational Databases ~"Question: List common use cases for key-value databases.
+ "~"Applications that require quick but simple reads and writes or use in-memory data caching to increase speed (such as user sessions and e-commerce shopping carts).
+ "
+51~ Module 2 - Non-relational Databases ~"Question: List some common key-value databases.
+ "~"Redis, Riak, Oracle NoSQL, LMDB, Azure Key Vault, Azure Table Storage, Amazon DynamoDB, Oracle Berkeley DB
+"
+52~ Module 2 - Non-relational Databases ~"Question: What is a document database?
+ "~"A document database stores data in collections of documents, most commonly in JSON-like structures or XML.
+"
+53~ Module 2 - Non-relational Databases ~"Question: List common use cases for document databases.
+ "~"Datasets in which available data vary greatly from entry to entry (e.g., user profiles or patient records), book databases, catalogues, applications that extract big data in real-time.
+"
+54~ Module 2 - Non-relational Databases ~"Question: List some common document databases.
+ "~"Azure CosmosDB, MongoDB, PostgreSQL, Amazon DocumentDB, ArangoDB, Couchbase Server, CouchDB
+"
+55~ Module 2 - Non-relational Databases ~"Question: How do key-value and document databases differ?
+ "~"Though both key-value and document databases use the principle of key-value pairing, document databases enforce that the ""value"" is indeed a document (JSON-like object, XML, etc.) and not just anything (e.g, integer, string, etc.). Additionally, document databases support metadata and allow documents/values to be indexed and/or grouped into collections. Finally, document databases support more-advanced queries because of the predictable document format.
+
+ ^ Column-store
+
+"
+56~ Module 2 - Non-relational Databases ~"Question: What is a column-store database?
+ "~"A column-store (or wide-column) database stores tabular data as individual columns (in contrast to a relational database table, which is stored as rows).
+"
+57~ Module 2 - Non-relational Databases ~"Question: List common use cases for column-store databases.
+ "~"Large datasets that can be formatted as tables, especially when such datasets are rarely accessed (thus are good candidates for the highly-compressed files that column-store databases utilize), are subjected to aggregate functions, or do not usually need all the columns to be read. 
+"
+58~ Module 2 - Non-relational Databases ~"Question: List some common column-store databases.
+ "~"Cassandra, Google BigTable, Amazon Redshift, HBase, MariaDB, Druid, Hypertable
+
+ ^ Graph
+
+"
+59~ Module 2 - Non-relational Databases ~"Question: What is a graph database?
+ "~"A graph database emphasizes networks by storing information in ||nodes|| (or vertices), ||edges|| (which are the relationships between nodes, and ||properties|| that describe those nodes and edges.
+"
+60~ Module 2 - Non-relational Databases ~"Question: List common use cases for graph databases.
+ "~"Applications that generate recommendations, applications that relate users together via friends/connections/etc., fraud detection, computing-network management and routing, semantic searches, master data management, dependencies, interests.
+"
+61~ Module 2 - Non-relational Databases ~"Question: List some common graph databases.
+ "~"JanusGraph, Neo4j, DGraph, DataStax, TigerGraph, Amazon Neptune, Amazon TinkerPop, Apache Spark, Azure CosmosDB Gremlin API
+"
+62~ Module 3 - Excel~"Question: How can Excel be used by data analysts?
+   "~"Excel is a ""Swiss-Army knife"" that can perform many functions well, especially spot-checking and formatting data. Power Query Editor is used to create a reusable sequence of data-cleansing steps. 
+"
+63~ Module 3 - Excel~"Question: What does ETL stand for?
+   "~"ETL, which stands for extract, transform and load, is a data integration process that combines data from multiple data sources into a single, consistent data store that is loaded into a data warehouse or other target system.
+"
+64~ Module 3 - Excel~"Question: Define each stage of ETL and talk about the steps involved in each stage.
+   "~"'Extract' gathers data from one or more source systems.
+   "
+65~ Module 3 - Excel~"Question: How can data be imported into Excel?
+   "~"Excel's ""Get & Transform"" includes built-in methods to import data from over 40 sources, including CSV files, Excel workbooks, and SQL databases.
+"
+66~ Module 3 - Excel~"Question: What are some of the common file formats for Excel import?
+   "~"Text/CSV, Excel, JSON, XML, and PDF. 
+"
+67~ Module 3 - Excel~"Question: What are some common issues that occur when importing data?
+   "~"Many data sources--including databases and some websites--require proper access credentials.
+   "
+68~ Module 3 - Excel~"Question: What is the 1900 problem?
+   "~"Excel incorrectly assumes that the year 1900 is a leap year. (Read more at [learn.microsoft.com](https://learn.microsoft.com/en-us/office/troubleshoot/excel/wrongly-assumes-1900-is-leap-year).) Additionally, Excel does not store dates prior to 1900-01-01.
+"
+69~ Module 3 - Excel~"Question: What does the Transform functionality do in Excel?
+   "~"Power Query Editor (backed by Power Query M) is a user interface that allows for easy data manipulation, including fitlering, replacing values, creating and removing fields, merging and appending datasets, and much more.
+"
+70~ Module 3 - Excel~"Question: When transforming a JSON dataset, how can `null` values be removed?
+   "~"Use the filter dropdown by a column's header to select everything 'except' ""(blank)"".
+"
+71~ Module 3 - Excel~"Question: What is a Pivot Table?
+   "~"A PivotTable is an interactive way to quickly summarize large amounts of data. You can use a PivotTable to analyze numerical data in detail, and answer unanticipated questions about your data. A PivotTable is especially designed for:
+       "
+72~ Module 3 - Excel~"Question: What is correlation?
+   "~"Correlation is a statistical measure that expresses the extent to which two variables are linearly related (meaning they change together at a constant rate). It’s a common tool for describing simple relationships WITHOUT making a statement about cause and effect.
+   "
+73~ Module 3 - Excel~"Question: What are some of the limitations of Excel?
+   "~"Excel does not handle dates earlier than 1900-01-01 well.
+   "
+74~ Module 3 - Excel~"Question: Explain the benefits of Power Query Editor and its pros/cons versus importing and transforming data directly in a workbook. 
+   "~"Pros: PQE is reusable.  Various steps are easy to remove or reorder.  Can merge datasets. 
+   "
+75~ Module 4 - Data Visualizations and Power BI~"Question: Name appropriate visualization types for the following: 
+    To display relationships between numerical data? 
+       "~[
+76~ Module 4 - Data Visualizations and Power BI~"Question: Name appropriate visualization types for the following: 
+    To display distributions 
+       "~[
+77~ Module 4 - Data Visualizations and Power BI~"Question: Name appropriate visualization types for the following: 
+    Categorical variable comparisons 
+       "~[
+78~ Module 4 - Data Visualizations and Power BI~"Question: Name appropriate visualization types for the following: 
+    What visualizations can look cool but are challenging to interpret quickly and completely? 
+       "~[
+79~ Module 6 - Python Basics ~"Question: What are common Python datatypes?
+   "~"`int` (integer), `float` (floating-point), `bool` (Boolean), sequences (list, tuple, range), `str` (string/text), `set` (set), `dict` (dictionary)
+"
+80~ Module 6 - Python Basics ~"Question: Explain the difference between integers and floating-point numbers.
+   "~"Integers do not have decimals whereas floats do have decimals. (Additionally, integers have infinite precision whereas floats have 64-bit double precision.)
+"
+81~ Module 6 - Python Basics ~"Question: What is a variable, and how are a variable's type and value set?
+   "~"A variable a ""storage container"" for a value. A variable is created when a value is assigned to, and the variable's type equals the type of the assigned value.
+"
+82~ Module 6 - Python Basics ~"Question: Compare and contrast lists, tuples, sets, and dictionaries.
+   "~"A list is a mutable, ordered sequence that permits duplicates.
+   "
+83~ Module 6 - Python Basics ~"Question: Describe different methods for accessing information in a dictionary.
+   "~"`dict.items()` returns a view object containing tuples of the dictionary's key-value pairs
+   "
+84~ Module 6 - Python Basics ~"Question: What is the format for list comprehension?
+   "~"`newlist = [expression for item in iterable if condition]`. E.g., `newlist = [i*2 for i in [1,2,3,4,5] if i>2]`
+"
+85~ Module 6 - Python Basics ~"Question: What does the `enumerate()` function do?
+   "~"The `enumerate()` function takes an iterable object and an optional start value (default = 0) and returns an enumerate object that contains tuples of the values incremented by 1 from the start value and the item from the iterable. It is frequently used to access both the index and value of items in a list while looping through that list using a `for` loop 
+"
+86~ Module 6 - Python Basics ~"Question: Compare and contrast functions and methods.
+   "~"Both functions and methods are callable, reusable code that can return values.
+   "
+87~ Module 6 - Python Basics ~"Question: What is recursion?
+   "~"Recursion is the process of a function calling itself. (Such a function is called a recursive function.)
+"
+88~ Module 6 - Python Basics ~"Question: Explain different types of loops.
+   "~"A `where` loop will continue to execute provided that its condition is true; these are used when the number of needed loops is not known prior to beginning the loop.
+   "
+89~ Module 6 - Python Basics ~"Question: Explain the keywords `break`, `continue`, `pass`, and `return`.
+   "~"`break` terminates a loop
+   "
+90~ Module 6 - Python Basics ~"Question: What is slicing?
+   "~"Slicing is used to create a subset of an iterable (i.e., list, tuple, or range). To slice from index `i` to index `j-1`, use syntax `newit = it[i:j]`. To slice from index `i` to index `j-1` with step `k`, use syntax `newit = it[i:j:k]`
+"
+91~ Module 6 - Python Basics ~"Question: What is exception handling?
+   "~"Exception handling controls how errors (that is, exceptions) from a code block are managed. The attempted code placed in a `try` block; the code to run if an exception is raised if placed in an `except` block. An optional `finally` block can be appended which will run after all other code from the try-except.
+"
+92~ Module 6 - Python Basics ~"Question: What is the difference between `=` and `==`?
+   "~"`=` is the assignment operator; it assigned a variable to a given value
+   "
+93~ Module 6 - Python Basics ~"Question: What is the modulo operator?
+   "~"The modulo operator--`%`--is used to determine the remainder of division. E.g., `4%2` returns 0 because 4 is evenly divisible by 2, whereas `5%2` returns 1 because 5/2 has a remainder of 1
+"
+94~ Module 6 - Python Basics ~"Question: How can numbers be exponentiated in Python?
+   "~"Number a raised to the power of number b can be accomplished using either `a||b` or `pow(a,b)`
+
+ ^ How would you...
+"
+95~ Module 6 - Python Basics ~"Question: Implement fizz-buzz (divisible by 3 = fizz, by 5 = buzz, by 3 and 5 = fizz-buzz)?
+   "~"Use a `for` loop and conditional logic:
+    ```
+    for i in range(max_num):
+        if i%3 and i%5:
+            print(f'{i} fizz-buzz)
+        elif i%3:
+            print(f'{i} fizz')
+        elif i%5:
+            print(f'{i} buzz')
+        else:
+            print(i)
+"
+96~ Module 6 - Python Basics ~"Question: Determine a variable's type?
+   "~"Using the `type()` function: `var_type = type(my_var)`
+"
+97~ Module 6 - Python Basics ~"Question: Loop through all items in a list? Loop through every other item in a list?
+   "~"Using a `for` loop: `for i in my_list: <code>`
+"
+98~ Module 6 - Python Basics ~"Question: Ask the user for input ensure that it is an integer?
+   "~"Use the `input()` function, the `int()` function, and a `try-except`:
+    ```
+    user_input = input('Prompt: ')
+    try:
+        user_input = int(user_input)
+    except:
+        pass
+    ```
+"
+99~ Module 7 - Object Oriented Data Modeling~"Question: What are methods?
+   "~"A method is a function that “belongs to” an object. (In Python, the term method is not unique to class instances: other object types can have methods as well. For example, list objects have methods called append, insert, remove, sort, and so on.
+"
+100~ Module 7 - Object Oriented Data Modeling~"Question: Compare and contrast methods and functions. 
+   "~"Both are callable, reusable code. 
+   "
+101~ Module 7 - Object Oriented Data Modeling~"Question: What are attributes?
+   "~"Attributes of a class are function objects that define corresponding methods of its instances. They are used to implement access controls of the classes.
+   "
+102~ Module 7 - Object Oriented Data Modeling~"Question: Explain lambda functions. 
+   "~"Lambda functions are Python short-hand:  They are anonymous (unnamed) functions that can be used in place of defining a function and calling it later.   The syntax of a lambda function is ""lambda arguments : expression""; e.g., ""lambda x, y : x + y"", where the value x + y is returned. 
+"
+103~ Module 7 - Object Oriented Data Modeling~"Question: Why is flowcharting or pseudocoding important?
+   "~"Pre-code planning plays an important role in creating an algorithm or a program, helping programmers plan how to write the code. Pseudocode is a false code used to describe how a computer program or an algorithm works. It uses annotations and text written in English because it’s meant for humans to read instead of computers.  
+   "
+104~ Module 7 - Object Oriented Data Modeling~"Question: What is the different between an object and a class? How are the two related?
+   "~"A class defines object properties including a valid range of values, and a default value. A class also describes object behavior. An object is a member or an ""instance"" of a class. An object has a state in which all of its properties have values that you either explicitly define or that are defined by default settings.
+"
+105~ Module 7 - Object Oriented Data Modeling~"Question: What does init do?  What is the purpose of a constructor?
+   "~"The __init__ method lets the class initialize the object's attributes. 
+   "
+106~ Module 7 - Object Oriented Data Modeling~"Question: How do we use the keyword self within classes? 
+   "~"Self is used at the first argument passed into [almost] every classmethod we construct on a class. Self refers to the instance of the object created and thus will reference two separate data objects when called. Self can be used to attach  
+   "
+107~ Module 8 - Pandas and Visualizations~"Question: What is pandas? How is it used by data analysts?
+   "~"`pandas` is the most popular python package for managing datasets and is used extensively by data scientists.
+[Pandas documentation](https://pandas.pydata.org/about/index.html)
+   "
+108~ Module 8 - Pandas and Visualizations~"Question: What are the two main types of objects used in the pandas library?
+   "~"The two primary data structures of pandas, Series (1-dimensional. Like an individual column) and DataFrame (2-dimensional - has both columns and rows), handle the vast majority of typical use cases in finance, statistics, social science, and many areas of engineering.
+   "
+109~ Module 8 - Pandas and Visualizations~"Question: What pandas method might you use to get the frequency of unique values in a column?
+   "~"Using values_counts() to calculate the frequency of unique value. 
+   "
+110~ Module 8 - Pandas and Visualizations~"Question: What pandas method might you use to calculate aggregate values for distinct groups in your data? (Alternatively: What pandas method uses the ""split-apply-combine"" pattern for data aggregation?)
+   "~"Split: Separate your data into different DataFrames, one for each category.
+   "
+111~ Module 8 - Pandas and Visualizations~"Question: How does a groupby operation work in pandas?
+   "~"df.groupby('categorical_variable')['continuous_variable'].some_aggregation()    
+    
+"
+112~ Module 8 - Pandas and Visualizations~"Question: How might you find all rows with missing values in a dataset using pandas?
+   "~"df.isnull().sum()
+   "
+113~ Module 8 - Pandas and Visualizations~"Question: How would you get a count of missing values in each column of a dataframe?
+   "~"df.isnull().sum()
+   "
+114~ Module 8 - Pandas and Visualizations~"Question: What information does a .info() return?
+   "~".info() is a function that is available on every DataFrame object. It gives you information about:
+   "
+115~ Module 8 - Pandas and Visualizations~"Question: What are some common data issues we have to deal with when working with an uncleaned dataset?
+Typical problems when working with new datasets:
+       "~"Missing values
+       "
+116~ Module 8 - Pandas and Visualizations~"Question: What information does a .describe() provide?
+   "~".describe() gives us these statistics:
+       "
+117~ Module 8 - Pandas and Visualizations~"Question: You're looking at your Pandas Dataframe and all data appears to be either an int or a float. How can you confirm your datatypes?  
+       "~"Df.info()  
+       "
+118~ Module 8 - Pandas and Visualizations~"Question: What is the difference between .loc and .iloc?
+   "~".loc requires that you specify the rows you want and the name of the column:
+       "
+119~ Module 8 - Pandas and Visualizations~"Question: What is inplace = True?
+   "~"Using the inplace=True keyword in a pandas method changes the default behaviour such that the operation on the dataframe doesn't return anything, it instead 'modifies the underlying data'. It mutates the actual object which you apply it to.   
+    
+"
+120~ Module 8 - Pandas and Visualizations~"Question: Describe a barchart:
+   "~"A bar chart or bar graph is a chart or graph that presents categorical data with rectangular bars with heights or lengths proportional to the values that they represent.
+    
+"
+121~ Module 8 - Pandas and Visualizations~"Question: What are correlation heatmaps? What data visualization library (ies) can we use to create a heatmap?
+   "~"Heat maps use color to show the strength of a relationship between two or more variables.
+   "
+122~ Module 9 - Machine Learning Basics~"Question: What is the Variance/Bias Tradeoff? What are examples of models that accentuate one of the other side of this tradeoff?
+ "~"The bias variance tradeoff is the idea that every model or statistical estimator will trade off bias (inaccuracy or poor fit) and variance (overfitting or high complexity). In ML you want to have models that have low bias and variance, ie they fit the dataset well without overfitting, giving a good model overall, while variance reflects the variation or dispersiveness of the estimator.
+ "
+123~ Module 9 - Machine Learning Basics~"Question: Why would we normalize / scale inputs as a transformation step. Can you cite an example where normalized input features create easy interpretation of the model?
+ "~"One main reason we normalize the inputs is to allow easier comparison between different input features on their weight of impact in the model. For example, if we were analyzing the price of a house as our dependant variable (Y), and used independent variables (X's) number of square feet, and number of bathrooms, we would find the regression beta coefficient for the bathrooms to be larger if there was no normalization. This is because the scale of these variables in 1,500- 5,000 vs 1-6 respectively. By scaling these inputs to the same scale (zero to one) we allow the coefficient in the regression model to be more interpretable across these input variables in regards to their impact on the price of a house.
+ "
+124~ Module 9 - Machine Learning Basics~"Question: Explain training vs. testing data and where they come from.
+ "~"Data available for ML is split into training and testing data by the programmer. Training is used to fit the model; testing is used to validate the model, specifically to determine if the model has been over-fit. (If the model performs well on training data but poorly on test data, it has likely been over-fit.) Although training and testing data can be split-out by-hand, it is common to use sklearn.model_selection.test_train_split() function. Common practice is to use 70-80% of available data to train the model, and use the remaining to test it.
+"
+125~ Module 9 - Machine Learning Basics~"Question: Differentiate between categorical data and text/string data.
+ "~"Categorical data are string values that represent meaningful partitions of data; i.e., groups. Not all text/string data are categorical. For example: A car's make or model is string/text but not categorical; car type (SUV, sedan, truck, etc.) is categorical. A street address is not categorical, but a state, country, or region generally is.
+"
+126~ Modules 10 & 11 - Kafka & Cloud ETL and Applied Kafka~"Question: What is a stream of data, what are some examples of streams of data used in a data pipeline?
+ "~"Streams of data are continuous sequences of data that are constantly being generated and updated with an open connection where the total volume may not be known ahead of time. For example, real time data from sensors or social media.This is opposed to batch processing which is processing a group of data at once where that data already exists and it's shape (e.g number of rows and columns) of that incoming batch can be known ahead of time. Streams also will have variable flow over time, e.g. there is more time spent on video games, then when school is in session, and that's part of stream processing, to handle this peaks and valleys of the rate of incoming data.
+ "
+127~ Modules 10 & 11 - Kafka & Cloud ETL and Applied Kafka~"Question: What is a data lake and how is it different from a database?
+ "~"A data lake is a large repository of data stored in its native format. It is different from a database because data lakes don't have any structure or schema. It does not organize or label data in any way and data can be stored in a variety of formats such as images, text, and audio files. Data lakes can also support many concurrent users accessing the same data set. However, because the content is not structured, it is not designed for query optimization, thus getting every piece of data that satisfies certain condition(s) will take longer. The result is that data lakes are well suited as the starting point for data analytics but are not suited for transactional applications.
+"
+128~ Modules 10 & 11 - Kafka & Cloud ETL and Applied Kafka~"Question: What is a cluster?
+ "~"A cluster is a group of computers (called nodes) that run in parallel. Databricks notebooks are run on configurable clusters. Some benefits include 'High reliability' (because if one node fails, others will take over) and Load balancing (as workloads are shared optimally across nodes).
+"
+129~ Modules 10 & 11 - Kafka & Cloud ETL and Applied Kafka~"Question: How do you run a pipeline in Azure Data Factory?
+ "~"In ADF, open the pipeline, click either ""Debug"" or ""Add trigger"". With add trigger, the options are to ""trigger now"" or create a new trigger (can be on schedule, tumbling window, storage events, or custom events). Additionally, previously-run jobs can be rerun from ADF's Monitor page.
+"
+130~ Modules 10 & 11 - Kafka & Cloud ETL and Applied Kafka~"Question: ""Systems Design"" - What are some resources you're familiar with to build a cloud based ETL pipeline. What are good uses and limitations of those resources. From a pseudo-code perspective, how might you pipe those resources into a data pipeline. 
+   "~"Most of my familiarity is with the Azure cloud, and some stops along the way I've hit in a data pipeline are Blob storage, Azure hosted SQL Server and databases, databricks and a sprinkling of kafka in between these as well. At the reporting level, I might expect to ingest the results of the pipeline via MS PowerQuery, bringing the final data to be reported on into Excel pivottable or PowerBI dashboard, into a pandas dataframe in a jupyter notebook for visualization, or even through a raw sql query 
+   "
+131~ General~"Question: What are the stages you'd take in a data analysis project?
+ "~"Gather data, clean the data, load the data, exploratory data analysis, build ML model, gather conclusions.
+"
+132~ General~"Question: How would you choose which tool to use for cleaning data?
+ "~"Some solutions may be easier to use depending on the size of the dataset and format.
+"
+133~ General~"Question: What would you do to help non-technical folks understand the results of a data analysis project?
+ "~"Clear visualizations can convey conclusions to a non-technical audience. Also refrain from using technical jargon when explaining results.
+
+
+"
