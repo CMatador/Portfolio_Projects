@@ -14,14 +14,22 @@ MODULELIST = 'Data/ModuleSelectionMenu.txt'
 # Takes user input for question subset
 def topic_selection():
     topic = input('Which of the following topics would you like to study? Please type only the topic number. ') # noqa
-    while not topic.isnumeric():
-        topic = input(
-            'Your response is not a valid number. Please enter a topic number. ') # noqa
-    while not (0 < int(topic) <= 6):
-        topic = input('The topic number you chose is invalid. Please choose an appropriate topic number. ') # noqa
+    req = 0
+    while req <2:
+    # Two requirements needed for a valid selection
+        req = 0 
+        if topic.isnumeric(): 
+            req +=1
+            if not (0 <= int(topic) < 6):
+                topic = input('The topic number you chose is invalid. Please choose an appropriate topic number. ') # noqa
+            else:
+                req +=1            
+        else:
+            topic = input(
+                    'Your response is not a valid number. Please enter a topic number. ') # noqa
+
     print(f'You have chosen {module_list[int(topic)]}.')
     return int(topic)
-
 
 # Generate Card
 def new_card():
